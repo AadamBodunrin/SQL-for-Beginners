@@ -4,4 +4,4 @@
 
 ***The famous DVD rental database is the other file - check the DVDRental Datatbase Queries.***
 
-I am have a basic knowledge of SQL and I hope to update this repo with more advacanced woork as I **level-up.**
+This is basically a documentation of my SQL learning using postgres and I hope to update this repo with more advacanced work as I **level-up.**
