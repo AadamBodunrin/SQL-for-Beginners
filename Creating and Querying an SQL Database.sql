@@ -92,7 +92,7 @@ SELECT firstname, lastname, location
  FROM customers
  WHERE location != 'Nigeria';
 
--- LIKE command can replace the =, adding anything between '% and %' will resturn any column that has anything in between. In this case, it will return all email that has adventure in it. 
+-- LIKE command can replace the = sign, adding anything between '% and %' will resturn any column that has anything in between. In this case, it will return all email that has adventure in it. 
 SELECT firstname, location, email
  FROM customers
  WHERE email LIKE '%@adventure%';
