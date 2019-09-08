@@ -33,16 +33,21 @@ SELECT *
  FROM 
  customers;
 
--- if SELECT is used without the *, you have to specify the title of the information you are trying to retrieve. limit is use to specify the number of rows you want to see.
+-- if SELECT is used without the *, you have to specify the title of the information you are trying to retrieve.
 
 SELECT email
  FROM customers;
 
--- LIMIT is used to idenity the number of rows returned by your query. In the case, only 5 customers and their location will be returned.
+-- LIMIT is used to identify the number of rows returned by your query. In the case, only 5 customers and their location will be returned.
  
 SELECT location
  FROM customers
  LIMIT 5;
+
+--OFFSET in conjuncton with LIMIT is used to skip rows. In this case, the query will return the next 5 location after the first 2.
+SELECT location
+ FROM customers
+ LIMIT 5 OFFSET 2;
 
 --ORDER BY is used as a filter, in this case, it shows the columns selected and ranks them by customer_id in descending order.
 

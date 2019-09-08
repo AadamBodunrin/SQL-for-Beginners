@@ -13,6 +13,7 @@ WHERE
  first_name IN ('Nick','Ed', 'Jennifer');
 
 -- Show me only last_name of actor whose first names are Ed, Nick and Jennifer
+
 SELECT
  last_name
 FROM
@@ -26,8 +27,8 @@ SELECT *
 FROM
  address;
 
-
 -- I want to see district & phone in descending order that are in the address table
+
 SELECT 
  district,
  phone
@@ -38,6 +39,7 @@ ORDER BY
  phone DESC;
 
 -- From fiilm table, show me title, film_id. from Inventory table, show me inventory_id. Do this when film_id on film table match film_id on the inventory table.
+
 SELECT film.title,
        film.film_id,
        inventory.inventory_id
@@ -49,6 +51,7 @@ ON
  film.film_id = inventory.film_id;
 
 -- show me first_name, last_name of actors whose first_name (Ed, Nick and Jennifer) are distinct 
+
 SELECT
  first_name,
  last_name
@@ -66,6 +69,7 @@ WHERE
  first_name IN ('Nick', 'Ed', 'Jennifer'));
 
 -- show me top 5 rows from inventory table and rental table.
+
 SELECT inventory.*, rental.*
  FROM inventory
  JOIN rental 
@@ -73,6 +77,7 @@ SELECT inventory.*, rental.*
  LIMIT 5;
 
 -- From the rental and payment table, show me just 10 rows of rental_id, rental_date, payment_id and ordedered by amount in descending order. 
+
 SELECT rental.rental_id, 
        rental.rental_date, 
        payment.payment_id, 
@@ -84,6 +89,7 @@ SELECT rental.rental_id,
  LIMIT 10;
 
 -- from film_category table, film and film_actor table, I want to see 5 rows of film_id, category_id, title, rental_rate  from the three tables.
+
 SELECT film_category.film_id, 
        film_category.category_id, 
        film.film_id, 
@@ -98,20 +104,24 @@ SELECT film_category.film_id,
  LIMIT 5;
 
 -- Show me all the other details in the actor table where actor_id is empty
+
 SELECT *
  FROM actor
  WHERE actor_id IS NULL;
 
 -- Show me all the other details in the actor table where actor_id is not empty
+
 SELECT *
  FROM actor
  WHERE actor_id IS NOT NULL;
 
 -- I want to see number of non-empty rows in film table
+
 SELECT COUNT(*)
  FROM film;
 
 --I want to see number of film_id in film table
+
 SELECT COUNT
      (film_id)
  FROM film;
@@ -122,6 +132,7 @@ SELECT SUM(Payment.amount) AS sum_amt
  FROM payment;
 
 -- I want to see both Maximum and minimun amount in the payment table
+
 SELECT MAX(amount) AS Max_amt,
        MIN(amount) AS Min_amt
  FROM payment;     
@@ -138,6 +149,7 @@ SELECT SUM(payment.amount) AS sum_amt,
  FROM payment;
 
 -- show the sum of payment made by each payment_id
+
 SELECT payment.payment_id,
        SUM(Payment.amount) AS sum_amt
  FROM payment
@@ -151,14 +163,12 @@ SELECT DISTINCT first_name,
  FROM actor;
 
 -- show the sum of amount by each payment id that is greater then 5.99
+
 SELECT payment.payment_id,
        SUM(Payment.amount) AS sum_amt
  FROM payment
  GROUP BY 1
  HAVING SUM(payment.amount) >= 5.99;
-
-SELECT last_update
- FROM film;
 
 --show the sum of rental_rate of films by month
 
@@ -168,14 +178,16 @@ SELECT DATE_TRUNC('month', film.last_update),
  GROUP BY DATE_TRUNC('month', film.last_update)
  ORDER BY DATE_TRUNC('month', film.last_update);
 
+--show the sum of rental_rate of films by day of the week
+
 SELECT DATE_PART('dow', film.last_update),
        SUM(rental_rate)
  FROM film
  GROUP BY DATE_PART('dow', film.last_update)
  ORDER BY DATE_PART('dow', film.last_update);
 
-
 -- Show me film.id, film.title, film.description and film_length. categorize film.length into yes(film.length is less than 86) or no (film.length is greater than 86) 
+
 SELECT film.film_id,
        film.title,
        film.description,
@@ -185,6 +197,7 @@ SELECT film.film_id,
  ORDER BY film.film_id; 
 
 -- Show me the COUNT of the two categories above.
+
 SELECT 
        CASE WHEN film.length = 86 OR film.length <= 86 THEN 'Yes' ELSE 'NO' END AS Not_lnger_than_86,
        COUNT(*) Either
@@ -205,6 +218,7 @@ SELECT film.film_id,
  ORDER BY film.film_id;
 
 -- Show me the COUNT of the four categories above. 
+
 SELECT 
        CASE WHEN film.length > 100 THEN 'Over 100'
             WHEN film.length > 86 AND film.length <= 100 THEN '86 - 100'
@@ -213,3 +227,4 @@ SELECT
             COUNT(*) AS movie_length_cat
  FROM film
  GROUP BY 1;
+

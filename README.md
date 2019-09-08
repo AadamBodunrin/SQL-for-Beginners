@@ -1,4 +1,4 @@
-# SQL Database Quering codes
+# SQL (PostgreSQL) Database Quering codes
 
 ***I created a database in Postgres and queried it - check the Creating and querying an SQL Database file.***
 
