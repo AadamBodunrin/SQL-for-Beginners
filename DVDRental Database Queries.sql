@@ -275,3 +275,22 @@ SELECT
       first_name || ' ' || last_name AS full_name2
  FROM  customer;
 
+SELECT actor.first_name,
+       actor.last_name,
+       actor.first_name || ' ' || actor.last_name AS full_name,
+       film.title,
+       film.description,
+       film.length,
+       CONCAT(actor.first_name, ' ', actor.last_name ) AS full
+ FROM film_actor
+ JOIN actor ON film_actor.actor_id = actor.actor_id
+ JOIN film ON film.film_id = film_actor.film_id;
+
+SELECT 
+       film.title,
+       film.length,
+       CONCAT(actor.first_name, ' ', actor.last_name ) AS full
+ FROM film_actor
+ JOIN actor ON film_actor.actor_id = actor.actor_id
+ JOIN film ON film.film_id = film_actor.film_id
+ WHERE film.length > 60;
