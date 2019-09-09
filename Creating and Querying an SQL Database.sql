@@ -109,3 +109,9 @@ SELECT *
 SELECT firstname, location, email
  FROM customers
  WHERE email NOT LIKE '%@adventure%';
+
+SELECT email,
+       STRPOS(email, '@') AS email__name,
+       POSITION('@' IN email) AS email_name2,
+       UPPER(LEFT(email, POSITION('@' IN email)-1)) AS name
+ FROM customers

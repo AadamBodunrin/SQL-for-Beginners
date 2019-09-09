@@ -228,3 +228,50 @@ SELECT
  FROM film
  GROUP BY 1;
 
+-- Seperate the first three, last 8 number of phone in the address table into another column
+SELECT district, 
+       city_id,
+       phone,
+       LEFT(phone, 3) AS first_three,
+       RIGHT(phone, 8) AS last_8,
+       RIGHT(phone, LENGTH(phone) - 3) AS last_11_alt
+ FROM address;
+
+-- view all the columns in city and add two columns to show city as upper and lower case
+SELECT *, 
+      UPPER(city),
+      LOWER(city)
+ FROM CITY;
+
+/* STRPOS can be used for comma(,), space( ) and fullstop(.) Split the email to show the name in caps before the fullstop(.)
+If you omit -1 in the LEFT command, the result will have fullstop(.) at the end */ 
+
+SELECT first_name,
+       last_name,
+       email,
+       STRPOS(customer.email, '.'),
+       POSITION('.' IN customer.email),
+       LOWER(LEFT(customer.email, POSITION('.' IN customer.email)-1)) AS email_name_low,
+       UPPER(LEFT(customer.email, POSITION('.' IN customer.email)-1)) AS email_name,
+       LOWER(LEFT(customer.email, POSITION('.' IN customer.email))) AS email_wo_1
+FROM customer
+LIMIT 5;
+
+-- split the street number from the address column
+SELECT address,
+       district,
+       city_id,
+       STRPOS(address, ' '),
+       POSITION(' ' IN address),
+       LEFT(address, POSITION(' ' IN address)-1) as strt_number
+FROM  address
+LIMIT 5;
+
+-- Combine first_name and last_name from the customer table to become full_name. PS: You can use either CONCAT or ||
+SELECT
+      first_name,
+      last_name,
+      CONCAT(first_name, ' ', last_name) AS full_name,
+      first_name || ' ' || last_name AS full_name2
+ FROM  customer;
+
