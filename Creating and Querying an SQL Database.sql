@@ -29,8 +29,8 @@ INSERT INTO customers
 -- Both -- and /* and */ are used for commenting. -- is for a single while /* */ can span several lines.
 -- SELECT * is used to return all info from a selected table.
 
-SELECT * 
- FROM 
+SELECT *
+ FROM
  customers;
 
 -- if SELECT is used without the *, you have to specify the title of the information you are trying to retrieve.
@@ -39,7 +39,7 @@ SELECT email
  FROM customers;
 
 -- LIMIT is used to identify the number of rows returned by your query. In the case, only 5 customers and their location will be returned.
- 
+
 SELECT location
  FROM customers
  LIMIT 5;
@@ -65,7 +65,7 @@ SELECT firstname, lastname, location
 
 SELECT firstname, lastname, location
  FROM customers
- ORDER BY customer_id 
+ ORDER BY customer_id
  LIMIT 5;
 
 -- You can specify more than one column with ORDER BY.
@@ -80,24 +80,24 @@ SELECT firstname, lastname, location
 
 -- WHERE is the perfect filter command for a column. != means not equal.
 
-SELECT firstname, lastname, location 
+SELECT firstname, lastname, location
  FROM customers
  WHERE customer_id != 1;
 
-SELECT firstname, lastname, location 
+SELECT firstname, lastname, location
  FROM customers
  WHERE customer_id > 1;
 
 -- For strings or specific items in a column you can use any below.
-SELECT firstname, lastname, location 
+SELECT firstname, lastname, location
  FROM customers
  WHERE location = 'Nigeria';
 
-SELECT firstname, lastname, location 
+SELECT firstname, lastname, location
  FROM customers
  WHERE location != 'Nigeria';
 
--- LIKE command can replace the = sign, adding anything between '% and %' will resturn any column that has anything in between. In this case, it will return all email that has adventure in it. 
+-- LIKE command can replace the = sign, adding anything between '% and %' will resturn any column that has anything in between. In this case, it will return all email that has adventure in it.
 SELECT firstname, location, email
  FROM customers
  WHERE email LIKE '%@adventure%';
