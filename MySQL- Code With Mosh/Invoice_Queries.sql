@@ -172,3 +172,28 @@ SELECT
 FROM Invoices
 GROUP BY client_id
 HAVING  Total_sales > 500 AND NUmber_of_invoices > 5;
+
+SELECT
+	c.customer_id,
+    c.first_name,
+    c.last_name,
+    SUM (oi.quantity * oi.unit_price) AS Total_sales
+FROM customers c
+JOIN orders o USING (customer_id)
+JOIN order_items oi USING (order_id)
+WHERE state = "VA"
+GROUP BY
+	c.customer_id,
+    c.first_name,
+    c.last_name
+HAVING Total_sales > 100;
+
+-- The  WITH ROLLUP operator
+
+SELECT
+	client_id,
+    SUM(invoice_total) AS Total_sales
+FROM invoices
+GROUP BY client_id WITH ROLLUP;
+
+
